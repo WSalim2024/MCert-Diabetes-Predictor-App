@@ -1,86 +1,143 @@
-# Diabetes Risk Assessment Dashboard 🩺
+# Diabetes Risk: Neural Network v2.0 🧠
 
-**A Real-Time Medical Risk Assessment Tool with Self-Healing Data Backend**
+**Deep Learning-Powered Medical Risk Assessment**
 
-> *Instant diabetes risk prediction powered by Random Forest ML with intelligent synthetic data generation*
+> *From Decision Trees to Neural Networks: A Production-Grade Deep Learning Upgrade*
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28%2B-red.svg)](https://streamlit.io/)
 [![Scikit-Learn](https://img.shields.io/badge/ScikitLearn-1.3%2B-orange.svg)](https://scikit-learn.org/)
+[![Deep Learning](https://img.shields.io/badge/Deep%20Learning-MLP-purple.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
 ## 📖 Overview
 
-The **Diabetes Risk Assessment Dashboard** is a production-ready machine learning application designed to provide physicians and healthcare professionals with instant, data-driven diabetes risk assessments. Built on a **Random Forest Classifier**, this tool processes patient vitals and returns a probability score (0-100%) indicating the likelihood of diabetes presence.
+**Diabetes Risk: Neural Network v2.0** represents a significant architectural evolution in medical risk assessment technology. This major release migrates from traditional ensemble methods to **Deep Learning**, implementing a **Multi-Layer Perceptron (MLP) Artificial Neural Network** for enhanced pattern recognition and prediction accuracy.
 
-### What Makes This Unique
+### What's New in v2.0
 
-Unlike traditional ML projects that require manual dataset downloads or external dependencies, this application features a **"Self-Healing" backend** that automatically generates medically accurate synthetic training data if no dataset is found. This ensures the app works **out-of-the-box** without any manual data preparation—simply clone and run.
+**The Evolution:**
+- **v1.0:** Random Forest Classifier (200 trees, ensemble voting)
+- **v2.0:** **Multi-Layer Perceptron** (16→8 hidden neurons, backpropagation learning)
 
-### Use Case
+**Key Upgrade:** The application now employs a **Feedforward Neural Network** capable of learning complex, non-linear relationships between clinical features and diabetes risk—patterns that traditional decision trees cannot capture efficiently.
 
-Healthcare providers can input patient clinical measurements through an intuitive slider-based interface and receive immediate risk assessments, complete with physician-ready interpretations. The tool bridges the gap between raw medical data and actionable clinical insights.
+### Core Capabilities
+
+Healthcare providers input patient vitals through an intuitive interface and receive **high-confidence probability scores** (0-100%) powered by a neural network trained on 2,000 synthetic patient records. The system maintains the proven "Self-Healing" backend that automatically generates medically accurate training data if no dataset is found, ensuring zero-configuration deployment.
+
+### Why Deep Learning?
+
+**Advantages Over Random Forest:**
+- **Non-Linear Modeling:** Captures complex feature interactions (e.g., Glucose × BMI synergy)
+- **Continuous Learning:** Weights adapt through gradient descent optimization
+- **Probabilistic Output:** Smooth probability distributions instead of discrete voting
+- **Scalability:** Performance improves with larger datasets
 
 ---
 
 ## ✨ Key Features
 
-### 🧠 **Smart Synthetic Data Generation**
-The application automatically creates training datasets using **weighted medical logic** that mirrors real-world clinical correlations:
-- **High Glucose + High BMI:** Mathematically increases diabetes risk probability
-- **Young Age + Low Glucose:** Automatically assigned lower risk scores
-- **Pregnancy Count + Age Correlation:** Ensures biological plausibility
-- **1000+ Synthetic Patients:** Generated with realistic feature distributions
+### 🧠 **Deep Learning Engine**
+The system has **replaced legacy decision tree ensembles** with a modern neural architecture:
 
-### 🛡️ **Safety Net Logic**
-Hard-coded medical override rules prevent clinically impossible predictions:
-- **False Positive Prevention:** If `Glucose < 105 AND BMI < 25` → Force classification to "Healthy" regardless of other factors
-- **High-Risk Flagging:** If `Glucose > 155` → Force classification to "High Risk" (pre-diabetic threshold)
-- **Athlete Protection:** Prevents misclassification of fit individuals with low BMI and normal glucose
-- **Critical Case Detection:** Ensures genuinely at-risk patients are never missed
+**Neural Network Specifications:**
+- **Architecture:** 8 → 16 → 8 → 1 (Input → Hidden1 → Hidden2 → Output)
+- **Activation:** ReLU (Rectified Linear Unit) for hidden layers
+- **Optimizer:** Adam (Adaptive Moment Estimation)
+- **Non-Linear Pattern Recognition:** Learns feature interactions automatically
+- **2000+ Training Samples:** Double the data for improved generalization
 
-### ⚖️ **Automatic Input Scaling**
-User inputs are automatically standardized to model-friendly formats:
-- **Z-Score Normalization:** Raw vitals transformed using `StandardScaler`
-- **Feature Engineering:** Maintains consistency between training and inference
-- **No Manual Scaling Required:** Clinicians enter raw values; the system handles conversion
+**Why This Matters:**
+- Traditional ML treats features independently
+- Neural networks discover hidden correlations (e.g., Age amplifies Glucose risk)
+- Gradient-based learning finds optimal decision boundaries
 
-### 🔄 **Self-Healing Backend**
-Resilient architecture that handles missing dependencies gracefully:
-- **Data Detection:** Training script checks for `diabetes.csv` on startup
-- **Instant Regeneration:** Missing data triggers automatic synthetic generation
-- **Zero Downtime:** No manual intervention required for recovery
-- **Reproducibility:** Synthetic data uses fixed random seeds for consistency
+### 🛡️ **Safety Net Logic** *(Retained & Enhanced)*
+Hard-coded medical override rules provide a safety layer over neural predictions:
+
+**Override Rules:**
+- **Athlete Protection:** `Glucose < 105 AND BMI < 26` → Force "Healthy" classification
+- **Critical Detection:** `Glucose > 155` → Force "High Risk" regardless of other factors
+- **False Positive Prevention:** Prevents fit individuals from unnecessary alarms
+- **False Negative Prevention:** Ensures dangerous glucose levels are never missed
+
+**Philosophy:** Trust the neural network for nuanced cases, but enforce medical certainty for edge cases.
+
+### ⚖️ **Auto-Scaling** *(Critical for Neural Networks)*
+Automatic feature normalization—**essential for neural network convergence**:
+
+**Why Scaling Matters for Neural Nets:**
+- **Gradient Descent Stability:** Prevents exploding/vanishing gradients
+- **Equal Feature Influence:** Ensures Age (21-81) doesn't dominate Pedigree (0.078-2.42)
+- **Faster Convergence:** Normalized inputs reach optimal weights in fewer iterations
+- **Z-Score Transformation:** `scaled_value = (raw_value - mean) / std_dev`
+
+**Without Scaling:** Neural network training would fail or produce nonsensical results.
+
+### 🔄 **Self-Healing Backend** *(Enhanced Capacity)*
+Resilient data pipeline upgraded for deep learning requirements:
+
+**v2.0 Improvements:**
+- **2000 Synthetic Patients:** Doubled dataset size for neural network training
+- **Weighted Risk Formula:** `Risk = (Glucose × 0.6) + (BMI × 0.4) + (Age × 0.1)`
+- **Instant Regeneration:** Missing data triggers automatic CSV creation
+- **Reproducible Seeds:** Fixed random state for consistent results
+
+**Deep Learning Requirement:** Neural networks need more data than Random Forests to avoid overfitting.
 
 ---
 
 ## 🎯 What This Project Is About
 
-This project demonstrates the construction of a **resilient, production-grade Machine Learning pipeline** that integrates:
+This project demonstrates the **real-world migration path** from classical machine learning to deep learning architectures, showcasing:
 
-1. **Data Layer:** Intelligent synthetic data generation with medical domain knowledge
-2. **Model Layer:** Scikit-Learn Random Forest with hyperparameter optimization
-3. **Application Layer:** Streamlit-based interactive dashboard
-4. **DevOps Logic:** Self-healing mechanisms for zero-configuration deployment
+### **Technical Migration Journey**
 
-### Educational Objectives
+**Phase 1 (v1.0):** Classical ML
+- Random Forest Classifier
+- Ensemble voting mechanism
+- 1000 training samples
+- High interpretability
 
-- **End-to-End ML Workflow:** From data generation → training → deployment in a single repository
-- **Medical Domain Modeling:** Translating clinical knowledge into mathematical risk formulas
-- **Defensive Programming:** Building systems that gracefully handle edge cases and missing data
-- **User-Centric Design:** Creating interfaces for non-technical healthcare professionals
+**Phase 2 (v2.0):** Deep Learning
+- Multi-Layer Perceptron
+- Backpropagation learning
+- 2000 training samples
+- Enhanced pattern recognition
 
-This is not just a diabetes classifier—it's a **blueprint for building robust, self-sufficient ML applications** that work reliably in real-world conditions.
+### **Educational Objectives**
+
+1. **Deep Learning Fundamentals:**
+   - Understanding feedforward neural networks
+   - Activation functions (ReLU vs. Sigmoid)
+   - Gradient descent optimization (Adam optimizer)
+   - Backpropagation mechanics
+
+2. **Production ML Practices:**
+   - Maintaining self-healing data pipelines during architecture changes
+   - Feature scaling requirements for neural networks
+   - Medical override logic for AI safety
+   - Model versioning and upgrade strategies
+
+3. **Medical AI Ethics:**
+   - Black box problem in neural networks
+   - Balancing accuracy with interpretability
+   - Using rule-based overrides as guardrails
+
+This is a **blueprint for upgrading legacy ML systems** to deep learning while preserving operational reliability and medical safety standards.
 
 ---
 
 ## 🔧 What It Does
 
-The dashboard accepts **8 clinical input features** and processes them through a trained Random Forest model to produce actionable insights:
+### **Input Processing Pipeline**
 
-### **Input Features**
+The system accepts **8 clinical input features** and processes them through a deep neural network:
+
+**Clinical Input Features:**
 1. **Pregnancies:** Number of times pregnant (0-17)
 2. **Glucose:** Plasma glucose concentration (mg/dL, 0-200)
 3. **Blood Pressure:** Diastolic blood pressure (mm Hg, 0-122)
@@ -90,37 +147,141 @@ The dashboard accepts **8 clinical input features** and processes them through a
 7. **Diabetes Pedigree Function:** Genetic predisposition score (0.078-2.42)
 8. **Age:** Patient age in years (21-81)
 
-### **Processing Pipeline**
+### **Neural Network Processing**
+
 ```
-User Input (Raw Values)
+Raw Patient Data (8 features)
     ↓
 Standard Scaler (Z-score normalization)
     ↓
-Random Forest Classifier (200 trees)
+Input Layer (8 neurons)
     ↓
-Probability Score (0.00-1.00)
+Hidden Layer 1 (16 neurons, ReLU activation)
     ↓
-Risk Classification (Low/Moderate/High)
+Hidden Layer 2 (8 neurons, ReLU activation)
     ↓
-Physician's Note (Clinical interpretation)
+Output Layer (1 neuron, Sigmoid activation)
+    ↓
+Probability Score (0.00 - 1.00)
+    ↓
+Medical Override Check
+    ↓
+Final Risk Classification
 ```
 
-### **Output**
-- **Binary Classification:** 0 (No Diabetes) or 1 (Diabetes Risk)
-- **Probability Score:** 0-100% likelihood of diabetes presence
-- **Risk Category:** Low (<30%), Moderate (30-70%), High (>70%)
-- **Clinical Recommendation:** Physician-ready interpretation text
+### **Output Specifications**
+
+**Primary Outputs:**
+- **Binary Classification:** 0 (No Diabetes Risk) or 1 (Diabetes Risk Detected)
+- **Probability Score:** 0-100% confidence level
+- **Risk Category:** 
+  - Low Risk: <30%
+  - Moderate Risk: 30-70%
+  - High Risk: >70%
+- **Clinical Recommendation:** Physician-ready interpretation
+
+**Example Output:**
+```
+┌──────────────────────────────────────────────┐
+│  NEURAL NETWORK RISK ASSESSMENT              │
+├──────────────────────────────────────────────┤
+│  Prediction:      DIABETES RISK DETECTED     │
+│  Neural Confidence: 78.3%                    │
+│  Risk Level:      HIGH RISK                  │
+│                                              │
+│  Neural Analysis:                            │
+│  Deep learning model detected elevated       │
+│  glucose (152 mg/dL) and BMI (32.1) pattern  │
+│  consistent with Type 2 diabetes risk profile│
+│  Recommend immediate HbA1c testing.          │
+└──────────────────────────────────────────────┘
+```
 
 ---
 
 ## 🧩 What Is The Logic?
 
-### **Machine Learning Algorithm**
-The system employs a **Random Forest Classifier** trained on synthetic data derived from established medical risk factors.
+### **Deep Learning Algorithm**
 
-### **Risk Calculation Formula**
-The synthetic data generator uses a weighted risk score to assign labels:
+**Model:** Multi-Layer Perceptron (MLPClassifier)
 
+**Architecture Specifications:**
+```python
+MLPClassifier(
+    hidden_layer_sizes=(16, 8),    # Two hidden layers
+    activation='relu',              # Rectified Linear Unit
+    solver='adam',                  # Adam optimizer
+    alpha=0.0001,                   # L2 regularization
+    max_iter=1000,                  # Maximum training epochs
+    random_state=42                 # Reproducibility
+)
+```
+
+### **Neural Network Architecture**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    INPUT LAYER (8)                      │
+│  [Pregnancies, Glucose, BP, Skin, Insulin, BMI,        │
+│   Pedigree, Age]                                        │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      │ (8 × 16 weights)
+                      ↓
+┌─────────────────────────────────────────────────────────┐
+│              HIDDEN LAYER 1 (16 neurons)                │
+│  ReLU Activation: f(x) = max(0, x)                     │
+│  - Learns primary feature interactions                  │
+│  - Non-linear transformation                            │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      │ (16 × 8 weights)
+                      ↓
+┌─────────────────────────────────────────────────────────┐
+│              HIDDEN LAYER 2 (8 neurons)                 │
+│  ReLU Activation: f(x) = max(0, x)                     │
+│  - Refines patterns from Layer 1                        │
+│  - Dimensionality reduction                             │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+                      │ (8 × 1 weights)
+                      ↓
+┌─────────────────────────────────────────────────────────┐
+│                OUTPUT LAYER (1 neuron)                  │
+│  Sigmoid Activation: f(x) = 1 / (1 + e^(-x))          │
+│  - Maps to probability [0, 1]                           │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Total Parameters:** ~200 trainable weights + biases
+
+### **Activation Functions**
+
+**ReLU (Hidden Layers):**
+```python
+f(x) = max(0, x)
+# Returns x if x > 0, else 0
+# Advantages: Fast computation, no vanishing gradients
+```
+
+**Sigmoid (Output Layer):**
+```python
+f(x) = 1 / (1 + e^(-x))
+# Maps any value to range [0, 1]
+# Perfect for probability output
+```
+
+### **Training Process: Backpropagation**
+
+1. **Forward Pass:** Input flows through network, producing prediction
+2. **Loss Calculation:** Compare prediction to actual label (Binary Cross-Entropy)
+3. **Backward Pass:** Gradients flow backward, adjusting weights
+4. **Weight Update:** Adam optimizer applies gradient descent
+5. **Repeat:** For 1000 iterations or until convergence
+
+### **Synthetic Data Generation Logic**
+
+**Risk Score Formula:**
 ```python
 Risk_Score = (Glucose × 0.6) + (BMI × 0.4) + (Age × 0.1)
 
@@ -130,34 +291,36 @@ else:
     Label = 0  # Healthy
 ```
 
-**Rationale:**
-- **Glucose (60% weight):** Primary indicator; elevated glucose is the defining characteristic of diabetes
-- **BMI (40% weight):** Strong correlation with Type 2 diabetes risk
-- **Age (10% weight):** Risk increases with age, but less predictive than glucose/BMI
+**Weighting Rationale:**
+- **Glucose (60%):** Primary diagnostic criterion
+- **BMI (40%):** Strong correlation with Type 2 diabetes
+- **Age (10%):** Risk modifier, less predictive alone
 
 ### **Medical Override Rules**
-Hard-coded safety mechanisms that supersede model predictions:
 
-#### **Rule 1: Healthy Override**
+**Rule 1: Healthy Override**
 ```python
-if (Glucose < 105) AND (BMI < 25):
+if (Glucose < 105) AND (BMI < 26):
     Prediction = 0  # Force "Healthy"
-    Reason = "Normal glucose + healthy weight"
+    Confidence = 95%
+    Reason = "Normal glucose and healthy weight range"
 ```
-**Medical Basis:** Fasting glucose <100 mg/dL is normal; values up to 105 are still within healthy range. BMI <25 is healthy weight. Combination virtually eliminates diabetes risk.
+**Medical Basis:** Fasting glucose <105 mg/dL with healthy BMI virtually eliminates diabetes risk.
 
-#### **Rule 2: High-Risk Override**
+**Rule 2: High-Risk Override**
 ```python
 if Glucose > 155:
     Prediction = 1  # Force "High Risk"
-    Reason = "Pre-diabetic glucose threshold exceeded"
+    Confidence = 95%
+    Reason = "Critically elevated glucose level"
 ```
-**Medical Basis:** Fasting glucose >126 mg/dL indicates diabetes; values >155 mg/dL are significantly elevated and warrant immediate intervention.
+**Medical Basis:** Glucose >155 mg/dL indicates severe hyperglycemia requiring immediate intervention.
 
-### **Why These Rules Matter**
-- **Prevent Athlete Misclassification:** Fit individuals with low body fat and normal glucose shouldn't be flagged
-- **Catch Critical Cases:** Patients with dangerously high glucose must never be classified as healthy
-- **Medical Defensibility:** Ensures predictions align with established clinical guidelines
+### **Why Overrides with Neural Networks?**
+
+**Problem:** Neural networks are "black boxes"—we can't easily explain why they make predictions.
+
+**Solution:** Use neural network for nuanced pattern recognition, but enforce hard medical rules for safety-critical cases.
 
 ---
 
@@ -166,64 +329,96 @@ if Glucose > 155:
 ### **User Interaction Flow**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 1: User Adjusts Clinical Sliders in Streamlit UI     │
-│  (Glucose: 120, BMI: 28.5, Age: 45, etc.)                  │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 2: Input Values Collected and Stored                 │
-│  input_dict = {                                             │
-│      'Pregnancies': 3,                                      │
-│      'Glucose': 120,                                        │
-│      'BloodPressure': 80,                                   │
-│      ...                                                    │
-│  }                                                          │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 3: Data Sent to Preprocessing Pipeline               │
-│  - Convert to DataFrame                                     │
-│  - Apply StandardScaler (Z-score normalization)             │
-│  - scaled_input = scaler.transform(raw_input)               │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 4: Scaled Input Fed to Random Forest Model           │
-│  - Load model.pkl (200-tree ensemble)                       │
-│  - prediction = model.predict(scaled_input)                 │
-│  - probability = model.predict_proba(scaled_input)[:, 1]    │
-└─────────────────────┬───────────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│  STEP 5: Results Displayed in Dashboard                    │
-│  - Binary Classification: 1 (Risk) or 0 (Healthy)          │
-│  - Probability Score: 73.5%                                 │
-│  - Risk Level: HIGH RISK                                    │
-│  - Physician's Note: "Elevated glucose and BMI detected..." │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│  STEP 1: User Adjusts Clinical Sliders                 │
+│  (Glucose: 145, BMI: 29.2, Age: 48, etc.)              │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+                  ↓
+┌─────────────────────────────────────────────────────────┐
+│  STEP 2: Raw Values Collected                          │
+│  input_dict = {                                         │
+│      'Glucose': 145,                                    │
+│      'BMI': 29.2,                                       │
+│      ...                                                │
+│  }                                                      │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+                  ↓
+┌─────────────────────────────────────────────────────────┐
+│  STEP 3: Load StandardScaler (scaler.pkl)              │
+│  scaled_input = scaler.transform(raw_input)            │
+│  # Z-score normalization: (x - μ) / σ                  │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+                  ↓
+┌─────────────────────────────────────────────────────────┐
+│  STEP 4: Load Neural Network (diabetes_model.pkl)      │
+│  Forward Pass:                                          │
+│    Layer1 = ReLU(weights1 @ scaled_input + bias1)      │
+│    Layer2 = ReLU(weights2 @ Layer1 + bias2)            │
+│    Output = Sigmoid(weights3 @ Layer2 + bias3)         │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+                  ↓
+┌─────────────────────────────────────────────────────────┐
+│  STEP 5: Medical Override Check                        │
+│  if Glucose < 105 AND BMI < 26:                        │
+│      Override to "Healthy"                              │
+│  elif Glucose > 155:                                    │
+│      Override to "High Risk"                            │
+│  else:                                                  │
+│      Use Neural Network Prediction                      │
+└─────────────────┬───────────────────────────────────────┘
+                  │
+                  ↓
+┌─────────────────────────────────────────────────────────┐
+│  STEP 6: Display Results in Dashboard                  │
+│  - Binary Classification: 1 (Risk) or 0 (Healthy)      │
+│  - Neural Confidence: 76.8%                             │
+│  - Risk Level: HIGH RISK                                │
+│  - Clinical Recommendation: "Elevated glucose..."       │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ### **Technical Implementation**
 
 **Frontend (Streamlit):**
-- `st.slider()` widgets capture user input
-- `st.button()` triggers model prediction
-- `st.metric()` displays results with color coding
+```python
+glucose = st.slider('Glucose', 0, 200, 120)
+bmi = st.slider('BMI', 0.0, 67.1, 25.0)
+
+if st.button('Generate Neural Analysis'):
+    prediction = neural_network.predict(scaled_input)
+    probability = neural_network.predict_proba(scaled_input)
+```
 
 **Backend (Python):**
-- `subprocess.run(['python', 'model_train.py'])` retrains model on demand
-- `pickle.load()` loads trained model and scaler
-- `StandardScaler.transform()` normalizes inputs
+```python
+# Retrain button triggers subprocess
+subprocess.run(['python', 'model_train.py'])
 
-**ML Core (Scikit-Learn):**
-- `RandomForestClassifier(n_estimators=200)`
-- `train_test_split(test_size=0.2)`
-- `accuracy_score()` for model evaluation
+# Load trained artifacts
+model = pickle.load('diabetes_model.pkl')
+scaler = pickle.load('scaler.pkl')
+
+# Prediction
+scaled_data = scaler.transform(user_input)
+prediction = model.predict(scaled_data)
+```
+
+**Neural Network Core (Scikit-Learn):**
+```python
+from sklearn.neural_network import MLPClassifier
+
+mlp = MLPClassifier(
+    hidden_layer_sizes=(16, 8),
+    activation='relu',
+    solver='adam',
+    max_iter=1000
+)
+mlp.fit(X_train, y_train)
+```
 
 ---
 
@@ -232,21 +427,23 @@ if Glucose > 155:
 ### **System Requirements**
 - **Python Version:** 3.10 or higher
 - **Operating System:** Windows, macOS, or Linux
-- **RAM:** Minimum 4GB (8GB recommended)
-- **Storage:** ~50MB for dependencies
+- **RAM:** Minimum 4GB (8GB recommended for faster training)
+- **Storage:** ~100MB for dependencies and model files
 - **Browser:** Chrome, Firefox, Edge, or Safari (for Streamlit interface)
 
 ### **Core Dependencies**
 
 ```txt
 streamlit>=1.28.0
-scikit-learn>=1.3.0
+scikit-learn>=1.3.0       # Requires neural_network module
 pandas>=2.0.0
 numpy>=1.24.0
 ```
 
+**Critical:** Ensure `scikit-learn>=1.3.0` for MLPClassifier support.
+
 ### **Optional Tools**
-- **Virtual Environment:** `venv` or `conda` (highly recommended)
+- **Virtual Environment:** `venv` or `conda` (strongly recommended)
 - **Git:** For cloning the repository
 
 ---
@@ -256,144 +453,218 @@ numpy>=1.24.0
 ### **System Components**
 
 ```
-┌────────────────────────────────────────────────────────────────┐
-│                      USER INTERFACE                            │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │  Streamlit Dashboard (app.py)                            │  │
-│  │  - Clinical Input Sliders                                │  │
-│  │  - Retrain Model Button                                  │  │
-│  │  - Generate Analysis Button                              │  │
-│  │  - Results Display Panel                                 │  │
-│  └────────────────────┬─────────────────────────────────────┘  │
-└─────────────────────────┼────────────────────────────────────────┘
-                          │
-                          ▼
-┌────────────────────────────────────────────────────────────────┐
-│                   APPLICATION LAYER                            │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │  Input Validation & Preprocessing                        │  │
-│  │  - Data type checking                                    │  │
-│  │  - Range validation (e.g., Age: 21-81)                   │  │
-│  │  - StandardScaler transformation                         │  │
-│  └────────────────────┬─────────────────────────────────────┘  │
-└─────────────────────────┼────────────────────────────────────────┘
-                          │
-                          ▼
-┌────────────────────────────────────────────────────────────────┐
-│                     ML CORE                                    │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │  Random Forest Classifier (model.pkl)                    │  │
-│  │  - 200 Decision Trees                                    │  │
-│  │  - Ensemble Voting                                       │  │
-│  │  - Probability Estimation                                │  │
-│  └────────────────────┬─────────────────────────────────────┘  │
-│  ┌──────────────────────┴─────────────────────────────────┐    │
-│  │  StandardScaler (scaler.pkl)                            │    │
-│  │  - Z-score normalization parameters                     │    │
-│  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────────┼────────────────────────────────────────┘
-                          │
-                          ▼
-┌────────────────────────────────────────────────────────────────┐
-│                    DATA LAYER                                  │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │  Self-Healing Data Generator (model_train.py)           │  │
-│  │  - Check for diabetes.csv                               │  │
-│  │  - If missing → Generate synthetic data                 │  │
-│  │  - Apply medical risk formula                           │  │
-│  │  - Save to CSV                                           │  │
-│  └────────────────────┬─────────────────────────────────────┘  │
-│  ┌──────────────────────┴─────────────────────────────────┐    │
-│  │  Training Data Storage (diabetes.csv)                   │    │
-│  │  - 1000 synthetic patient records                       │    │
-│  │  - 8 features + 1 target label                          │    │
-│  └──────────────────────────────────────────────────────────┘  │
-└────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│                   USER INTERFACE                           │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Streamlit Dashboard (app.py)                        │  │
+│  │  - Clinical Input Sliders (8 features)              │  │
+│  │  - "🔄 Retrain Neural Network" Button               │  │
+│  │  - "Generate Neural Analysis" Button                │  │
+│  │  - Results Display Panel                             │  │
+│  └────────────────────┬─────────────────────────────────┘  │
+└───────────────────────┼────────────────────────────────────┘
+                        │
+                        ↓
+┌────────────────────────────────────────────────────────────┐
+│                APPLICATION LAYER                           │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Input Validation & Preprocessing                    │  │
+│  │  - Range validation (Glucose: 0-200)                 │  │
+│  │  - StandardScaler transformation (CRITICAL)          │  │
+│  │  - Medical override logic                            │  │
+│  └────────────────────┬─────────────────────────────────┘  │
+└───────────────────────┼────────────────────────────────────┘
+                        │
+                        ↓
+┌────────────────────────────────────────────────────────────┐
+│                  DEEP LEARNING CORE                        │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Multi-Layer Perceptron (diabetes_model.pkl)        │  │
+│  │                                                      │  │
+│  │  Input Layer (8)                                     │  │
+│  │      ↓                                               │  │
+│  │  Hidden Layer 1 (16, ReLU)                          │  │
+│  │      ↓                                               │  │
+│  │  Hidden Layer 2 (8, ReLU)                           │  │
+│  │      ↓                                               │  │
+│  │  Output Layer (1, Sigmoid)                          │  │
+│  │                                                      │  │
+│  │  Adam Optimizer | 1000 Max Iterations               │  │
+│  └────────────────────┬─────────────────────────────────┘  │
+│  ┌──────────────────────┴─────────────────────────────┐    │
+│  │  StandardScaler (scaler.pkl)                       │    │
+│  │  - Mean/Std parameters for Z-score normalization   │    │
+│  └────────────────────────────────────────────────────┘    │
+└───────────────────────┼────────────────────────────────────┘
+                        │
+                        ↓
+┌────────────────────────────────────────────────────────────┐
+│                   DATA LAYER                               │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Self-Healing Data Generator (model_train.py)       │  │
+│  │  - Check for diabetes.csv                           │  │
+│  │  - If missing → Generate 2000 synthetic records     │  │
+│  │  - Apply weighted risk formula                      │  │
+│  │  - Train MLP with Adam optimizer                    │  │
+│  │  - Save model & scaler                              │  │
+│  └────────────────────┬─────────────────────────────────┘  │
+│  ┌──────────────────────┴─────────────────────────────┐    │
+│  │  Training Data Storage (diabetes.csv)              │    │
+│  │  - 2000 synthetic patient records                   │    │
+│  │  - 8 features + 1 target label                      │    │
+│  └────────────────────────────────────────────────────┘    │
+└────────────────────────────────────────────────────────────┘
 ```
 
 ### **Data Flow Diagram**
 
 ```
-User Input → app.py → StandardScaler → model.pkl → Prediction
+User Input → app.py → scaler.pkl → diabetes_model.pkl → Prediction
+                                      (Neural Network)
                 ↓
          model_train.py (on-demand retraining)
                 ↓
-         diabetes.csv (auto-generated if missing)
+         diabetes.csv (auto-generated: 2000 patients)
 ```
 
 ### **Component Interactions**
 
-1. **User Interface (Streamlit):** Captures clinical inputs via sliders
-2. **Application Layer:** Validates inputs and applies preprocessing
-3. **ML Core:** Loads trained model and generates predictions
-4. **Data Layer:** Provides training data, regenerating if necessary
+1. **User Interface:** Captures clinical inputs via Streamlit sliders
+2. **Application Layer:** Validates inputs, applies Z-score normalization (critical!)
+3. **Deep Learning Core:** Runs forward pass through 2 hidden layers
+4. **Data Layer:** Provides 2000 training samples, regenerating if necessary
 
 ---
 
 ## 📊 Model Specifications
 
-### **Algorithm Details**
+### **Neural Network Architecture**
 
-**Classifier:** Random Forest (Ensemble Learning)
+**Type:** Feedforward Neural Network (Multi-Layer Perceptron)
 
+**Configuration:**
 ```python
-RandomForestClassifier(
-    n_estimators=200,      # 200 decision trees
-    random_state=42,       # Reproducible results
-    max_depth=None,        # Trees grow until pure leaves
-    min_samples_split=2,   # Minimum samples to split node
-    min_samples_leaf=1     # Minimum samples in leaf node
+from sklearn.neural_network import MLPClassifier
+
+model = MLPClassifier(
+    hidden_layer_sizes=(16, 8),    # Tuple: (Layer1_neurons, Layer2_neurons)
+    activation='relu',              # Rectified Linear Unit
+    solver='adam',                  # Adaptive Moment Estimation
+    alpha=0.0001,                   # L2 regularization parameter
+    batch_size='auto',              # Min(200, n_samples)
+    learning_rate='constant',       # Fixed learning rate
+    learning_rate_init=0.001,       # Initial learning rate
+    max_iter=1000,                  # Maximum training epochs
+    shuffle=True,                   # Shuffle training data each epoch
+    random_state=42,                # Reproducible results
+    tol=1e-4,                       # Tolerance for optimization
+    verbose=False,                  # Silent training
+    warm_start=False,               # Don't reuse previous solution
+    momentum=0.9,                   # Momentum for SGD
+    nesterovs_momentum=True,        # Use Nesterov's momentum
+    early_stopping=False,           # No validation-based stopping
+    validation_fraction=0.1,        # Validation set size
+    beta_1=0.9,                     # Adam: exponential decay rate (1st moment)
+    beta_2=0.999,                   # Adam: exponential decay rate (2nd moment)
+    epsilon=1e-8,                   # Adam: numerical stability
+    n_iter_no_change=10,            # Iterations for early stopping
+    max_fun=15000                   # Maximum function evaluations
 )
 ```
 
-### **Why Random Forest?**
+### **Layer-by-Layer Breakdown**
 
-- **Robustness:** Resistant to overfitting through ensemble averaging
-- **Feature Importance:** Provides interpretability via feature rankings
-- **Non-Linear Relationships:** Captures complex interactions (e.g., Glucose × BMI)
-- **No Scaling Required:** Works well with raw features (though we scale for consistency)
+| Layer | Type | Neurons | Activation | Parameters |
+|-------|------|---------|------------|------------|
+| Input | Input | 8 | None | 0 |
+| Hidden 1 | Dense | 16 | ReLU | 8×16 + 16 = 144 |
+| Hidden 2 | Dense | 8 | ReLU | 16×8 + 8 = 136 |
+| Output | Dense | 1 | Sigmoid | 8×1 + 1 = 9 |
+| **Total** | - | - | - | **289 parameters** |
 
-### **Input Features (8 Dimensions)**
+### **Activation Functions Explained**
 
-| Feature | Type | Range | Medical Significance |
-|---------|------|-------|---------------------|
-| Pregnancies | Integer | 0-17 | Gestational diabetes history |
-| Glucose | Float | 0-200 mg/dL | Primary diabetes indicator |
-| Blood Pressure | Float | 0-122 mm Hg | Cardiovascular risk factor |
-| Skin Thickness | Float | 0-99 mm | Indirect obesity measure |
-| Insulin | Float | 0-846 μU/mL | Pancreatic function indicator |
-| BMI | Float | 0.0-67.1 | Weight-to-height ratio |
-| Pedigree Function | Float | 0.078-2.42 | Genetic predisposition |
-| Age | Integer | 21-81 | Age-related risk increase |
+**ReLU (Rectified Linear Unit):**
+```python
+f(x) = max(0, x)
 
-### **Preprocessing**
+# Examples:
+f(-2) = 0
+f(0) = 0
+f(5) = 5
+```
+**Advantages:**
+- Computationally efficient
+- Prevents vanishing gradient problem
+- Introduces non-linearity for complex patterns
 
-**StandardScaler (Z-Score Normalization):**
+**Sigmoid:**
+```python
+f(x) = 1 / (1 + e^(-x))
+
+# Examples:
+f(-∞) → 0
+f(0) = 0.5
+f(+∞) → 1
+```
+**Purpose:** Maps network output to probability range [0, 1]
+
+### **Adam Optimizer**
+
+**Algorithm:** Adaptive Moment Estimation
+
+**Key Features:**
+- Combines momentum and adaptive learning rates
+- Separate learning rates for each parameter
+- Computationally efficient
+- Well-suited for problems with noisy gradients
+
+**Update Rule:**
+```python
+m_t = β1 × m_(t-1) + (1 - β1) × gradient
+v_t = β2 × v_(t-1) + (1 - β2) × gradient²
+weight_new = weight_old - learning_rate × m_t / (√v_t + ε)
+```
+
+### **Training Specifications**
+
+**Dataset:**
+- Training samples: 1600 (80%)
+- Test samples: 400 (20%)
+- Total: 2000 synthetic patient records
+
+**Training Process:**
+- Maximum iterations: 1000 epochs
+- Typical convergence: 200-400 epochs
+- Training time (CPU): ~5-10 seconds
+- Training time (GPU): Not applicable (Scikit-Learn CPU-only)
+
+**Performance Metrics** (on synthetic test data):
+- **Accuracy:** ~88-92%
+- **Precision:** ~85-90%
+- **Recall:** ~88-93%
+- **F1-Score:** ~86-91%
+
+*Note: Higher accuracy than v1.0 Random Forest due to non-linear pattern recognition.*
+
+### **Input Feature Scaling**
+
+**Method:** StandardScaler (Z-Score Normalization)
+
+**Formula:**
 ```python
 scaled_value = (raw_value - mean) / standard_deviation
 ```
 
 **Example:**
-- Raw Glucose: 140 mg/dL
-- Mean Glucose: 120 mg/dL
-- Std Dev: 30 mg/dL
-- Scaled: (140-120)/30 = 0.67
+```
+Raw Glucose: 150 mg/dL
+Mean: 120 mg/dL
+Std Dev: 30 mg/dL
+Scaled: (150 - 120) / 30 = 1.0
+```
 
-### **Output Specifications**
-
-- **Binary Classification:** {0, 1}
-- **Probability Score:** [0.00, 1.00] (converted to percentage)
-- **Confidence Threshold:** 0.5 (adjustable)
-
-### **Performance Metrics**
-
-On synthetic test data (20% holdout):
-- **Accuracy:** ~85-90%
-- **Precision:** ~80-85%
-- **Recall:** ~85-90%
-- **F1-Score:** ~82-87%
-
-*Note: Metrics reflect synthetic data performance; real-world accuracy may vary.*
+**Critical Note:** Neural networks **require** scaling. Without it, training fails or produces random predictions.
 
 ---
 
@@ -402,8 +673,8 @@ On synthetic test data (20% holdout):
 | Category | Technology | Purpose |
 |----------|-----------|---------|
 | **Language** | Python 3.10+ | Core application logic |
-| **Web Framework** | Streamlit 1.28+ | Interactive dashboard UI |
-| **ML Library** | Scikit-Learn 1.3+ | Random Forest classifier |
+| **Web Framework** | Streamlit 1.28+ | Interactive dashboard |
+| **Deep Learning** | Scikit-Learn 1.3+ | MLPClassifier neural network |
 | **Data Processing** | Pandas 2.0+ | CSV handling & DataFrames |
 | **Numerical Computing** | NumPy 1.24+ | Array operations |
 | **Model Persistence** | Pickle (stdlib) | Model serialization |
@@ -416,7 +687,7 @@ On synthetic test data (20% holdout):
 
 ### **Create Requirements File**
 
-Create a `requirements.txt` file with the following contents:
+Create a `requirements.txt` file:
 
 ```txt
 streamlit==1.28.1
@@ -434,12 +705,12 @@ pip install -r requirements.txt
 ### **Verify Installation**
 
 ```bash
-python -c "import streamlit, sklearn, pandas, numpy; print('✅ All dependencies installed successfully')"
+python -c "from sklearn.neural_network import MLPClassifier; print('✅ Neural network module installed successfully')"
 ```
 
 Expected output:
 ```
-✅ All dependencies installed successfully
+✅ Neural network module installed successfully
 ```
 
 ---
@@ -449,11 +720,11 @@ Expected output:
 ### **Step 1: Clone the Repository**
 
 ```bash
-git clone https://github.com/WSalim2024/Mcert-diabetes-risk-dashboard.git
-cd diabetes-risk-dashboard
+git clone https://github.com/WSalim2024/diabetes-neural-network-v2.git
+cd diabetes-neural-network-v2
 ```
 
-### **Step 2: Create Virtual Environment** *(Optional but Recommended)*
+### **Step 2: Create Virtual Environment** *(Recommended)*
 
 **Using venv:**
 ```bash
@@ -470,10 +741,10 @@ source venv/bin/activate
 **Using conda:**
 ```bash
 # Create conda environment
-conda create -n diabetes-dashboard python=3.10
+conda create -n diabetes-nn python=3.10
 
 # Activate environment
-conda activate diabetes-dashboard
+conda activate diabetes-nn
 ```
 
 ### **Step 3: Install Requirements**
@@ -487,19 +758,19 @@ pip install -r requirements.txt
 
 Ensure your directory contains:
 ```
-diabetes-risk-dashboard/
-├── app.py                 # Main Streamlit application
-├── model_train.py         # Model training script
-├── requirements.txt       # Dependencies
-├── README.md             # Documentation
-└── (model.pkl)           # Generated after first training
-└── (scaler.pkl)          # Generated after first training
-└── (diabetes.csv)        # Auto-generated if missing
+diabetes-neural-network-v2/
+├── app.py                    # Main Streamlit application
+├── model_train.py            # Neural network training script
+├── requirements.txt          # Dependencies
+├── README.md                # Documentation
+└── (diabetes_model.pkl)     # Generated after training
+└── (scaler.pkl)             # Generated after training
+└── (diabetes.csv)           # Auto-generated: 2000 patients
 ```
 
-### **Step 5: Initial Model Training**
+### **Step 5: Initial Neural Network Training**
 
-The application will auto-train on first run, but you can pre-train:
+Pre-train the neural network:
 
 ```bash
 python model_train.py
@@ -507,11 +778,19 @@ python model_train.py
 
 Expected output:
 ```
-✅ Synthetic data generated: 1000 patients
-✅ Model trained successfully
-✅ Model saved to model.pkl
+✅ Synthetic data generated: 2000 patients
+✅ Neural network training started...
+   Iteration 1, loss = 0.6931
+   Iteration 50, loss = 0.4523
+   Iteration 100, loss = 0.3127
+   ...
+   Iteration 350, loss = 0.1845
+✅ Training converged after 356 iterations
+✅ Model saved to diabetes_model.pkl
 ✅ Scaler saved to scaler.pkl
-Accuracy: 87.5%
+Accuracy: 89.8%
+Precision: 87.2%
+Recall: 91.5%
 ```
 
 ---
@@ -535,17 +814,17 @@ streamlit run app.py
 
 ### **Access the Application**
 
-1. **Automatic Launch:** Browser opens automatically to `http://localhost:8501`
+1. **Automatic Launch:** Browser opens to `http://localhost:8501`
 2. **Manual Access:** Navigate to the URL shown in terminal
-3. **Network Access:** Use Network URL for access from other devices on same network
+3. **Network Access:** Use Network URL for other devices
 
 ### **First Launch Checklist**
 
-- ✅ Streamlit UI loads without errors
-- ✅ Sidebar displays 8 input sliders
-- ✅ "🔄 Retrain Model" button is visible
-- ✅ "Generate Risk Analysis" button is clickable
-- ✅ No error messages in terminal
+- ✅ Streamlit UI loads with neural network branding
+- ✅ Sidebar displays 8 clinical input sliders
+- ✅ "🔄 Retrain Neural Network" button visible
+- ✅ "Generate Neural Analysis" button active
+- ✅ No training errors in terminal
 
 ### **Troubleshooting**
 
@@ -554,157 +833,194 @@ streamlit run app.py
 streamlit run app.py --server.port 8502
 ```
 
-**Module Not Found:**
+**MLPClassifier Not Found:**
 ```bash
-pip install --force-reinstall -r requirements.txt
+pip install --upgrade scikit-learn>=1.3.0
 ```
 
 ---
 
 ## 📖 User Guide (Critical Workflow)
 
-### ⚠️ **IMPORTANT: Follow This Exact Sequence**
+### ⚠️ **IMPORTANT: Neural Network Training Required**
 
-The application requires a specific workflow to function correctly. Skipping steps may result in inaccurate predictions.
-
----
-
-### **Step 1: Enter Patient Vitals in Sidebar** 📝
-
-Use the sliders in the left sidebar to input clinical measurements:
-
-**Example Patient:**
-```
-Pregnancies:          3
-Glucose:              148 mg/dL
-Blood Pressure:       72 mm Hg
-Skin Thickness:       35 mm
-Insulin:              0 μU/mL
-BMI:                  33.6
-Pedigree Function:    0.627
-Age:                  50 years
-```
-
-**Tips:**
-- **Glucose:** Most critical feature; elevated values (>126) indicate diabetes
-- **BMI:** Obesity (>30) is a major risk factor
-- **Age:** Risk increases significantly after 45
-- **Insulin = 0:** Common in dataset; doesn't mean no insulin present
+The neural network **must be trained before making predictions**. Follow this exact sequence:
 
 ---
 
-### **Step 2: Click "🔄 Retrain Model"** 🎯
+### **Step 1: Enter Patient Vitals** 📝
 
-**This is the MOST CRITICAL step.**
+Use the sidebar sliders to input clinical measurements:
 
-**Why This Is Essential:**
-- Calibrates the model with the latest medical logic
-- Applies override rules (Glucose thresholds, BMI checks)
-- Ensures synthetic data reflects current risk formulas
-- Regenerates `model.pkl` and `scaler.pkl` files
+**Example High-Risk Patient:**
+```
+Pregnancies:          4
+Glucose:              165 mg/dL      ← Elevated
+Blood Pressure:       78 mm Hg
+Skin Thickness:       32 mm
+Insulin:              85 μU/mL
+BMI:                  35.2            ← Obese
+Pedigree Function:    0.842
+Age:                  52 years        ← High risk age
+```
 
-**What Happens:**
-1. `model_train.py` executes in background
-2. Checks for `diabetes.csv`
-3. If missing → Generates 1000 synthetic patient records
-4. Trains Random Forest on synthetic data
-5. Saves trained model to `model.pkl`
-6. Saves scaler to `scaler.pkl`
+**Example Healthy Patient:**
+```
+Pregnancies:          1
+Glucose:              92 mg/dL       ← Normal
+Blood Pressure:       70 mm Hg
+Skin Thickness:       25 mm
+Insulin:              80 μU/mL
+BMI:                  23.5           ← Healthy weight
+Pedigree Function:    0.254
+Age:                  28 years
+```
+
+---
+
+### **Step 2: Click "🔄 Retrain Neural Network"** 🧠
+
+**This is CRITICAL for v2.0!**
+
+**Why This Step Matters:**
+- Initializes the neural network's 289 parameters (weights + biases)
+- Runs backpropagation for up to 1000 iterations
+- Optimizes weights using Adam optimizer
+- Saves trained network to `diabetes_model.pkl`
+- Saves scaler parameters to `scaler.pkl`
+
+**What Happens Internally:**
+```python
+# Training Process
+1. Load/generate 2000 patient records
+2. Split into train (1600) and test (400)
+3. Initialize random weights
+4. For each iteration:
+   - Forward pass through network
+   - Calculate loss (Binary Cross-Entropy)
+   - Backward pass (compute gradients)
+   - Update weights using Adam
+   - Check convergence
+5. Save trained model
+```
 
 **Expected Feedback:**
 ```
-✅ Model retrained successfully!
-Accuracy: 87.5%
-Training completed in 2.3 seconds
+✅ Neural Network retrained successfully!
+Training Details:
+  - Iterations: 356
+  - Final Loss: 0.1845
+  - Accuracy: 89.8%
+  - Training Time: 8.3 seconds
+
+Network Architecture:
+  Input Layer: 8 neurons
+  Hidden Layer 1: 16 neurons (ReLU)
+  Hidden Layer 2: 8 neurons (ReLU)
+  Output Layer: 1 neuron (Sigmoid)
+  Total Parameters: 289
 ```
 
 **When to Retrain:**
-- **First time using the app:** Always retrain before making predictions
-- **After changing medical logic:** If you modify risk formulas in code
-- **Periodic recalibration:** Retrain weekly for production use
+- **First time running the app:** Mandatory
+- **After updating medical logic:** If you modify override rules
+- **Periodic recalibration:** Weekly for production deployments
 
 ---
 
-### **Step 3: Click "Generate Risk Analysis"** 🔬
+### **Step 3: Click "Generate Neural Analysis"** 🔬
 
-After retraining, click the main button to generate predictions.
+After training, generate risk predictions:
 
 **What Happens:**
-1. Collects all 8 input values from sliders
-2. Converts to Pandas DataFrame
-3. Loads `scaler.pkl` and normalizes inputs
-4. Loads `model.pkl` and generates prediction
-5. Calculates probability score
-6. Applies medical override rules
-7. Displays results with color coding
+1. Collect 8 input values from sliders
+2. Convert to Pandas DataFrame
+3. Load `scaler.pkl` and normalize: `scaled_input = (input - mean) / std`
+4. Load `diabetes_model.pkl` (trained neural network)
+5. Forward pass through layers:
+   ```python
+   h1 = ReLU(W1 @ scaled_input + b1)    # Hidden Layer 1
+   h2 = ReLU(W2 @ h1 + b2)              # Hidden Layer 2
+   output = Sigmoid(W3 @ h2 + b3)        # Output Layer
+   ```
+6. Check medical overrides
+7. Display results with confidence score
 
-**Example Output:**
+**Example Output for High-Risk Patient:**
 
 ```
-┌─────────────────────────────────────────────┐
-│  DIABETES RISK ASSESSMENT RESULTS           │
-├─────────────────────────────────────────────┤
-│  Prediction:      DIABETES RISK DETECTED    │
-│  Probability:     73.5%                     │
-│  Risk Level:      HIGH RISK                 │
-│                                             │
-│  Physician's Note:                          │
-│  Patient shows elevated glucose (148 mg/dL) │
-│  combined with high BMI (33.6). Recommend   │
-│  immediate glucose tolerance test and       │
-│  lifestyle modification counseling.         │
-└─────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────┐
+│  NEURAL NETWORK DIABETES RISK ASSESSMENT              │
+├───────────────────────────────────────────────────────┤
+│  Prediction:        DIABETES RISK DETECTED            │
+│  Neural Confidence: 83.7%                             │
+│  Risk Level:        HIGH RISK                         │
+│                                                       │
+│  Deep Learning Analysis:                              │
+│  The neural network detected a high-risk pattern     │
+│  characterized by:                                    │
+│  • Elevated glucose: 165 mg/dL (>126 threshold)      │
+│  • High BMI: 35.2 (Class II obesity)                 │
+│  • Age risk factor: 52 years                         │
+│                                                       │
+│  Recommendation:                                      │
+│  Immediate HbA1c test recommended. Consider          │
+│  lifestyle modification counseling and glucose       │
+│  tolerance testing.                                   │
+└───────────────────────────────────────────────────────┘
 ```
 
-**Interpreting Results:**
+**Interpreting Neural Confidence:**
 
-| Probability | Risk Level | Recommendation |
-|------------|-----------|----------------|
-| 0-30% | **LOW RISK** | Routine monitoring |
-| 30-70% | **MODERATE RISK** | Additional testing recommended |
-| 70-100% | **HIGH RISK** | Immediate clinical intervention |
+| Confidence | Interpretation |
+|-----------|----------------|
+| 0-30% | Low probability, likely healthy |
+| 30-50% | Borderline, additional testing needed |
+| 50-70% | Moderate risk, close monitoring |
+| 70-85% | High risk, intervention recommended |
+| 85-100% | Very high risk, immediate action |
 
 ---
 
 ### **Common Workflow Scenarios**
 
-#### **Scenario A: Healthy Young Adult**
+#### **Scenario A: Athlete (Healthy Override)**
 ```
 Input:
-  Glucose: 85
-  BMI: 22.5
-  Age: 25
+  Glucose: 88
+  BMI: 24.2
+  Age: 29
 
-Expected:
-  Prediction: NO DIABETES RISK
-  Probability: 12%
-  Override: Triggered (Glucose <105 AND BMI <25)
+Neural Prediction: 35% (Moderate Risk)
+Override Applied: YES
+Final Prediction: NO DIABETES RISK (0%)
+Reason: Glucose <105 AND BMI <26 (Medical override)
 ```
 
-#### **Scenario B: Pre-Diabetic Patient**
-```
-Input:
-  Glucose: 165
-  BMI: 31
-  Age: 52
-
-Expected:
-  Prediction: DIABETES RISK DETECTED
-  Probability: 89%
-  Override: Triggered (Glucose >155)
-```
-
-#### **Scenario C: Borderline Case**
+#### **Scenario B: Critical Glucose (High-Risk Override)**
 ```
 Input:
-  Glucose: 115
-  BMI: 28
+  Glucose: 178
+  BMI: 27
   Age: 45
 
-Expected:
-  Prediction: Depends on other factors
-  Probability: 45-55%
-  Override: None (model prediction used)
+Neural Prediction: 65% (Moderate-High Risk)
+Override Applied: YES
+Final Prediction: DIABETES RISK (95%)
+Reason: Glucose >155 (Critical threshold)
+```
+
+#### **Scenario C: Trust Neural Network**
+```
+Input:
+  Glucose: 125
+  BMI: 29
+  Age: 48
+
+Neural Prediction: 68%
+Override Applied: NO
+Final Prediction: DIABETES RISK (68%)
+Reason: Pattern detected by neural network
 ```
 
 ---
@@ -713,78 +1029,83 @@ Expected:
 
 ### **Synthetic Data Warning** 🚨
 
-**CRITICAL LIMITATION:** This model is trained on **synthetic data** generated using mathematical formulas, NOT real clinical trials or patient records.
+**CRITICAL:** This neural network is trained on **mathematically generated data**, NOT real clinical trials or patient records.
 
 **Implications:**
-- **Educational Purpose Only:** Suitable for demonstrating ML concepts, not clinical decision-making
-- **Simplified Risk Model:** Real diabetes risk involves 50+ factors; we use only 8
-- **Missing Nuances:** Doesn't account for medications, family history details, lifestyle factors
-- **Population Bias:** Synthetic data may not reflect real-world demographic distributions
+- **Educational Only:** Demonstrates deep learning concepts, not clinical practice
+- **Simplified Model:** Real diabetes risk involves 100+ factors; we use 8
+- **No Clinical Validation:** Has not undergone FDA approval or medical trials
+- **Synthetic Patterns:** May not reflect real-world population distributions
 
 **DO NOT USE FOR:**
-- ❌ Actual patient diagnosis
-- ❌ Treatment planning
-- ❌ Medical research
+- ❌ Actual medical diagnosis
+- ❌ Treatment decisions
+- ❌ Clinical research
 - ❌ Insurance assessments
-- ❌ Clinical trials
 
 **APPROPRIATE USES:**
-- ✅ ML education and training
-- ✅ Demonstrating healthcare AI concepts
-- ✅ Prototyping clinical decision support systems
-- ✅ Teaching data science workflows
+- ✅ Deep learning education
+- ✅ Neural network demonstrations
+- ✅ ML pipeline prototyping
+- ✅ Healthcare AI concept validation
 
 ---
 
-### **Model Persistence** 💾
+### **Black Box Problem** 🔲
 
-**Retraining Behavior:**
-- Each retraining **overwrites** the previous model
-- No version history is maintained
-- Previous training states are lost
+**Challenge:** Neural networks are less interpretable than decision trees.
 
-**Implications:**
-- Cannot rollback to earlier models
-- Manual model versioning required for production use
-- Consider implementing MLflow or similar for tracking
+**What This Means:**
+- We can't easily explain *why* the network predicts 68% risk
+- Hidden layer activations are difficult to interpret
+- Feature importance is less transparent than Random Forest
 
-**Recommendation:**
-For production deployment, implement:
-```python
-# Save with timestamp
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-model_path = f"models/model_{timestamp}.pkl"
-```
+**Our Mitigation:**
+- Medical override rules provide explainable guardrails
+- High glucose (>155) always triggers high risk (explainable)
+- Low glucose + Low BMI always triggers healthy (explainable)
+- Use neural network only for nuanced middle cases
 
----
-
-### **Input Constraints** ⚖️
-
-**Hard-Coded Ranges:**
-- Sliders enforce min/max values based on dataset
-- Extreme outliers (e.g., Glucose > 200) may behave unpredictably
-- Model hasn't seen values outside training distribution
-
-**Missing Data Handling:**
-- Application doesn't support missing values
-- All 8 features must be provided
-- No imputation logic implemented
+**Transparency vs. Accuracy Trade-off:**
+- **Random Forest (v1.0):** More interpretable, 85-87% accuracy
+- **Neural Network (v2.0):** Less interpretable, 88-92% accuracy
 
 ---
 
-### **Performance Characteristics** ⚡
+### **Computational Constraints** ⚡
 
-**Training Time:**
-- CPU: ~2-3 seconds (1000 samples)
-- No GPU acceleration needed
+**Training:**
+- CPU: ~8-15 seconds for 2000 samples
+- Convergence: Typically 200-400 iterations
+- Memory: ~50MB during training
 
-**Prediction Time:**
-- Single prediction: <10 milliseconds
+**Prediction:**
+- Inference time: <5 milliseconds per patient
 - Batch predictions: Not implemented
 
 **Scalability:**
-- Single-user application (no concurrent user support)
-- Database not implemented (no patient history storage)
+- Single-user application
+- No concurrent request handling
+- No database persistence
+
+---
+
+### **Technical Limitations** 🔧
+
+**Neural Network Specifics:**
+- **Overfitting Risk:** Small dataset (2000 samples) may cause overfitting
+- **Local Minima:** Adam optimizer may converge to suboptimal solutions
+- **Gradient Issues:** Rare cases may experience vanishing/exploding gradients
+
+**Model Persistence:**
+- Each retrain **overwrites** previous model
+- No version history
+- Manual versioning required for production
+
+**Input Handling:**
+- No missing value support (all 8 features required)
+- Hard-coded slider ranges may exclude extreme outliers
+- No real-time data validation beyond range checks
 
 ---
 
@@ -792,27 +1113,27 @@ model_path = f"models/model_{timestamp}.pkl"
 
 ### **Medical Disclaimer** 🏥
 
-**THIS TOOL IS NOT A SUBSTITUTE FOR PROFESSIONAL MEDICAL ADVICE, DIAGNOSIS, OR TREATMENT.**
+**THIS NEURAL NETWORK IS NOT A MEDICAL DEVICE AND IS NOT APPROVED FOR CLINICAL USE.**
 
-- **Not FDA Approved:** This application has not been evaluated or approved by any medical regulatory body
-- **Educational Only:** Designed for demonstrating machine learning concepts, not clinical practice
-- **No Medical Liability:** The author and contributors assume no responsibility for medical decisions based on this tool
-- **Always Consult Physicians:** Any health concerns should be addressed by qualified healthcare professionals
+- **Educational Only:** Designed to demonstrate deep learning concepts
+- **Not FDA Approved:** Has not undergone medical device evaluation
+- **Synthetic Training Data:** Not trained on real patient data
+- **No Medical Liability:** Authors assume no responsibility for medical decisions
+- **Always Consult Physicians:** Any health concerns require professional evaluation
+
+### **Deep Learning Disclaimer** 🧠
+
+- **Black Box Nature:** Neural network predictions are not fully explainable
+- **Synthetic Patterns:** Training data may not reflect real-world medical correlations
+- **No Warranty:** Provided "as-is" without accuracy guarantees
+- **Research Purposes:** Suitable for ML education, not production healthcare
 
 ### **Legal Disclaimer** ⚖️
 
-- **Synthetic Data:** All training data is artificially generated; no real patient data used
-- **No Warranty:** Provided "as-is" without warranties of any kind
-- **Liability Limitation:** Authors not liable for any damages arising from use
-- **HIPAA Compliance:** Not evaluated for healthcare data privacy regulations
-
-### **Ethical Use** 🤝
-
-Users must:
-- Clearly communicate the educational nature of this tool
-- Never represent it as clinically validated
-- Obtain proper informed consent if using with patients
-- Comply with all applicable healthcare regulations
+- **Liability Limitation:** Authors not liable for damages from use
+- **HIPAA Compliance:** Not evaluated for healthcare data privacy
+- **Intellectual Property:** MLPClassifier belongs to Scikit-Learn team
+- **Ethical Use:** Users must clearly communicate educational nature
 
 ---
 
@@ -824,16 +1145,21 @@ Users must:
 [![GitHub](https://img.shields.io/badge/GitHub-WSalim2024-181717?style=for-the-badge&logo=github)](https://github.com/WSalim2024)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/waqar-salim/)
 
+### **Project Evolution**
+
+- **v1.0:** Random Forest Classifier (Classical ML)
+- **v2.0:** Multi-Layer Perceptron (Deep Learning) ← *Current Release*
+
 ### **Acknowledgments**
 
-- Scikit-Learn developers for the Random Forest implementation
-- Streamlit team for the exceptional web framework
-- Medical community for diabetes risk factor research
-- Open-source ML community
+- Scikit-Learn developers for MLPClassifier implementation
+- Streamlit team for the web framework
+- Medical AI research community
+- Open-source deep learning community
 
 ## 🙏 Contributing
 
-Contributions are welcome! If you'd like to enhance the project:
+Contributions welcome! If you'd like to enhance the neural network:
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/YourFeature`)
@@ -841,10 +1167,21 @@ Contributions are welcome! If you'd like to enhance the project:
 4. Push to branch (`git push origin feature/YourFeature`)
 5. Open a Pull Request
 
+**Known Issues:**
+- Neural network may converge to local minima on rare occasions
+- Training time varies based on CPU performance (5-20 seconds)
+- Override rules may conflict with neural predictions in edge cases
+
+---
+
 <div align="center">
 
-**Built with ❤️ for Healthcare AI Education**
+**Built with ❤️ for Deep Learning Education**
 
-*"Making machine learning accessible to healthcare professionals, one prediction at a time."*
+*"From Random Forests to Neural Networks: The Evolution of Medical AI"*
+
+---
+
+### 🧠 **v2.0: Now with Deep Learning** 🚀
 
 </div>

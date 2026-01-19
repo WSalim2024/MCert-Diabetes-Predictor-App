@@ -12,6 +12,7 @@ SCALER_PATH = os.path.join(root_dir, 'models', 'scaler.pkl')
 
 
 def generate_smart_data(filepath):
+    """Generates synthetic data with medical correlations."""
     print("[INFO] Generating SMART Medical Data with SAFETY NET...")
 
     np.random.seed(42)
@@ -30,31 +31,25 @@ def generate_smart_data(filepath):
     }
     df = pd.DataFrame(data)
 
-    # 2. CALCULATE RISK SCORE
-    # We increase the weight of Glucose and BMI significantly
+    # 2. Risk Calculation (The Logic)
     score = (
-            (df['Glucose'] - 100) * 0.6 +  # Major factor
-            (df['BMI'] - 25) * 0.4 +  # Major factor
+            (df['Glucose'] - 100) * 0.6 +
+            (df['BMI'] - 25) * 0.4 +
             (df['Age'] - 30) * 0.1 +
             (df['DiabetesPedigreeFunction'] * 5)
     )
 
-    # 3. ASSIGN OUTCOMES (Standard Threshold)
-    # Normalize score to 0-1 range for probability
+    # 3. Assign Outcomes
     score = (score - score.mean()) / score.std()
-    probability = 1 / (1 + np.exp(-score))  # Sigmoid function
+    probability = 1 / (1 + np.exp(-score))
     df['Outcome'] = (probability > 0.5).astype(int)
 
-    # --- 4. THE SAFETY NET (HARD RULES) ---
-    # This ensures your test cases behave logically
-
-    # RULE A: The "Athlete" Override
-    # Low Glucose + Low BMI = Always Healthy
+    # 4. Safety Net Overrides
+    # Athlete Rule
     mask_healthy = (df['Glucose'] < 105) & (df['BMI'] < 26)
     df.loc[mask_healthy, 'Outcome'] = 0
 
-    # RULE B: The "High Risk" Override
-    # Very High Glucose = Always Diabetic
+    # High Risk Rule
     mask_sick = (df['Glucose'] > 155)
     df.loc[mask_sick, 'Outcome'] = 1
 
@@ -68,12 +63,12 @@ def generate_smart_data(filepath):
 def train_model():
     print(f"[INFO] Working Directory: {root_dir}")
 
-    # ALWAYS generate fresh data to ensure rules are applied
+    # Always generate fresh data for consistent results
     df = generate_smart_data(DATA_PATH)
 
     try:
         from sklearn.model_selection import train_test_split
-        from sklearn.ensemble import RandomForestClassifier
+        from sklearn.neural_network import MLPClassifier  # <--- NEW: Neural Network
         from sklearn.preprocessing import StandardScaler
         from sklearn.metrics import accuracy_score
 
@@ -82,17 +77,27 @@ def train_model():
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-        # Standardize features (Crucial!)
+        # Scaling is CRITICAL for Neural Networks
         scaler = StandardScaler()
         X_train_scaled = scaler.fit_transform(X_train)
         X_test_scaled = scaler.transform(X_test)
 
-        print("[INFO] Training Model...")
-        model = RandomForestClassifier(n_estimators=200, random_state=42)
+        print("[INFO] Training Neural Network (MLP)...")
+
+        # --- NEURAL NETWORK ARCHITECTURE ---
+        # Hidden Layers: (16, 8) -> Two layers with 16 and 8 neurons respectively
+        # Activation: 'relu' (Standard for deep learning)
+        # Max Iterations: 1000 (To allow enough time to converge)
+        model = MLPClassifier(hidden_layer_sizes=(16, 8),
+                              activation='relu',
+                              solver='adam',
+                              max_iter=1000,
+                              random_state=42)
+
         model.fit(X_train_scaled, y_train)
 
         acc = accuracy_score(y_test, model.predict(X_test_scaled))
-        print(f"[INFO] Model Accuracy: {acc:.2%}")
+        print(f"[INFO] Neural Network Accuracy: {acc:.2%}")
 
         os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
         with open(MODEL_PATH, 'wb') as f:
