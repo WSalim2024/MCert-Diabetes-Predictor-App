@@ -1,0 +1,23 @@
+# --- Virtual Environments ---
+venv/
+.venv/
+env/
+.env
+
+# --- Python Cache ---
+__pycache__/
+*.py[cod]
+
+# --- IDE Settings (PyCharm/VS Code) ---
+.idea/
+.vscode/
+
+# --- Streamlit ---
+.streamlit/
+
+# --- Generated Artifacts (The app creates these automatically) ---
+# We ignore these so users generate their own fresh versions
+data/
+models/
+*.pkl
+*.csv
